@@ -12,7 +12,11 @@ button.addEventListener('click', async () => {
         button.disabled = true;
         const interestRate = await getInterestRate(amount, timeframe);
         const usuryRate = await getUsuryRate();
-        showData(interestRate, usuryRate, amount, timeframe);
+        if(interestRate && usuryRate){
+            showData(interestRate, usuryRate, amount, timeframe);
+        }else{
+            alert('No es posible calcular tu crédito en este momento');
+        }
         button.disabled = false;
     }else{
         alert('Ingresa todos los datos del formulario');
